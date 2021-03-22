@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Generators" />
+      <Folder Include="Repositories" />
+      <Folder Include="Services" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Maybe" Version="1.2.0" />
+    </ItemGroup>
+
+</Project>
