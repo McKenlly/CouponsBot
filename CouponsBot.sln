@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponsBot.Persistence", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponsBot.Interfaces", "CouponsBot.Interfaces\CouponsBot.Interfaces.csproj", "{C7861578-41FC-447D-9544-2AE970E79109}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1E9FC253-6B04-4A42-A019-0BD2BD10B281}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouponsBot.Tests", "CouponsBot.Tests\CouponsBot.Tests.csproj", "{AF0AE8E2-D58C-49F3-98BA-41FAF7075FB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{C7861578-41FC-447D-9544-2AE970E79109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7861578-41FC-447D-9544-2AE970E79109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7861578-41FC-447D-9544-2AE970E79109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E9FC253-6B04-4A42-A019-0BD2BD10B281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+								{1E9FC253-6B04-4A42-A019-0BD2BD10B281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+								{1E9FC253-6B04-4A42-A019-0BD2BD10B281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+								{1E9FC253-6B04-4A42-A019-0BD2BD10B281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF0AE8E2-D58C-49F3-98BA-41FAF7075FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF0AE8E2-D58C-49F3-98BA-41FAF7075FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF0AE8E2-D58C-49F3-98BA-41FAF7075FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF0AE8E2-D58C-49F3-98BA-41FAF7075FB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
