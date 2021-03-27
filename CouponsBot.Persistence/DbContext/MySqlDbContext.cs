@@ -1,30 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Validation;
-using CouponsBot.Domain.Models;
-using EntityDbContext = System.Data.Entity.DbContext;
+﻿using CouponsBot.Domain.Models;
 using CouponsBot.Persistence.Configurations;
+using Microsoft.EntityFrameworkCore;
 
 namespace CouponsBot.Persistence.DbContext
 {
-    public class MySqlDbContext : EntityDbContext
+    public class MySqlDbContext : Microsoft.EntityFrameworkCore.DbContext
     {
-        public DbSet<Coupon> Coupons { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Company> Companies { get; set; }
-        
-        public MySqlDbContext() : base("MySqlConnectionString") {}
-        
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public Microsoft.EntityFrameworkCore.DbSet<Coupon> Coupons { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Rating> Ratings { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<User> Users { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<Company> Companies { get; set; }
+
+        public MySqlDbContext(DbContextOptions options) : base(options)
         {
-            modelBuilder.Configurations.AddFromAssembly(typeof(CompanyEntityTypeConfiguration).Assembly);
-            modelBuilder.Configurations.AddFromAssembly(typeof(CouponEntityTypeConfiguration).Assembly);
-            modelBuilder.Configurations.AddFromAssembly(typeof(RatingEntityTypeConfiguration).Assembly);
-            modelBuilder.Configurations.AddFromAssembly(typeof(UserCouponEntityTypeConfiguration).Assembly);
-            modelBuilder.Configurations.AddFromAssembly(typeof(UserEntityTypeConfiguration).Assembly);
         }
-        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new CompanyEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new CouponEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new RatingEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new UserCouponEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new UserEntityTypeConfiguration());
+        }
     }
 }

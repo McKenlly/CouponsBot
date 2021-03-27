@@ -18,8 +18,8 @@ namespace CouponsBot.Persistence.Configurations
             builder.Property(x => x.Price);
             builder.Property(x => x.OldPrice);
             builder.Property(x => x.DiscountAmount);
-            builder.Property(x => x.PeriodWorks.DateFrom);
-            builder.Property(x => x.PeriodWorks.DateTo);
+            builder.Property(x => x.DateFrom);
+            builder.Property(x => x.DateTo);
             builder.Property(x => x.IsArchived);
             builder.Property(x => x.IsWorked);
 
