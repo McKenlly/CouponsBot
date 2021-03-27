@@ -8,7 +8,7 @@ namespace CouponsBot.Interfaces.Repositories
     public interface ICouponsRepository
     {
         public Task AddAsync(Coupon coupon);
-        public Task<IReadOnlyCollection<Coupon>> ListAllAsync();
+        public IReadOnlyCollection<Coupon> ListAllByCompany(int companyId);
         public Task AddRangeAsync(IReadOnlyCollection<Coupon> coupons);
         public Task RemoveCouponAsync(Coupon coupon);
         public Task RemoveCouponByIdAsync(int id);

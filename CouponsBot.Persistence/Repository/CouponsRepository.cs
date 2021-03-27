@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CouponsBot.Domain.Models;
 using CouponsBot.Interfaces.Repositories;
 using Hazzik.Maybe;
+using Microsoft.EntityFrameworkCore;
 
 namespace CouponsBot.Persistence.Repository
 {
@@ -25,9 +26,9 @@ namespace CouponsBot.Persistence.Repository
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IReadOnlyCollection<Coupon>> ListAllAsync()
+        public IReadOnlyCollection<Coupon> ListAllByCompany(int companyId)
         {
-            return await _coupons.AsNoTracking().ToListAsync();
+            return _coupons.Where<Coupon>(x => x.CompanyId == companyId).ToArray();
         }
 
         public async Task AddRangeAsync(IReadOnlyCollection<Coupon> coupons)
