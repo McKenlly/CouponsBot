@@ -2,6 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+        <UserSecretsId>9fbf0597-68f2-4cd1-9522-47a392ccb036</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerfileContext>..</DockerfileContext>
+        <Configurations>Debug;Release;MyConfig</Configurations>
     </PropertyGroup>
 
     <ItemGroup>

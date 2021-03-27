@@ -1,34 +1,39 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using CouponsBot.Domain.Models;
 using CouponsBot.Interfaces.Repositories;
 using Hazzik.Maybe;
+using Microsoft.EntityFrameworkCore;
 
 namespace CouponsBot.Persistence.Repository
 {
     public class CouponsRepository : ICouponsRepository
     {
-        private readonly System.Data.Entity.DbContext _context;
-        private readonly DbSet<Coupon> _coupons;
+        private readonly Microsoft.EntityFrameworkCore.DbContext _context;
+        private readonly Microsoft.EntityFrameworkCore.DbSet<Coupon> _coupons;
 
-        public CouponsRepository(System.Data.Entity.DbContext dbContext)
+        public CouponsRepository(Microsoft.EntityFrameworkCore.DbContext dbContext)
         {
             _context = dbContext;
             _coupons = _context.Set<Coupon>();
         }
 
-        public async Task AddOrUpdateAsync(Coupon coupon)
+        public async Task AddAsync(Coupon coupon)
         {
-            _coupons.AddOrUpdate(coupon);
+            await _coupons.AddAsync(coupon);
             await _context.SaveChangesAsync();
+        }
+
+        public IReadOnlyCollection<Coupon> ListAllByCompany(int companyId)
+        {
+            return _coupons.Where<Coupon>(x => x.CompanyId == companyId).ToArray();
         }
 
         public async Task AddRangeAsync(IReadOnlyCollection<Coupon> coupons)
         {
-            _coupons.AddRange(coupons);
+            await _coupons.AddRangeAsync(coupons);
             await _context.SaveChangesAsync();
         }
 

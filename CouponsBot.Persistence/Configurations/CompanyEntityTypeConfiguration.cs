@@ -12,7 +12,7 @@ namespace CouponsBot.Persistence.Configurations
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Name).HasMaxLength(32).IsRequired();
+            builder.Property(x => x.Name).HasMaxLength(32).IsUnicode().IsRequired();
             builder.Property(x => x.Description);
             builder.Property(x => x.IconUrl).IsRequired();
 

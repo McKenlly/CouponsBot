@@ -16,22 +16,17 @@ namespace CouponsBot.Domain.Models
         public double Price { get; set; }
         public double OldPrice { get; set; }
         public double DiscountAmount { get; set; }
-        public PeriodWorks PeriodWorks { get; set; }
+        public DateTime DateFrom { get; set; }
+        public DateTime DateTo { get; set; }
         public bool IsWorked { get; set; }
         public bool IsArchived { get; set; }
 
         #region aggretion Methods
-        public int TotalReviews => Ratings.Count;
-        public double AverageMark => Ratings.Average(x => x.Mark);
+        public int? TotalReviews => Ratings?.Count;
+        public double? AverageMark => Ratings?.Average(x => x.Mark);
         #endregion
         
         public IReadOnlyCollection<Rating> Ratings { get; set; }
         public IReadOnlyCollection<UserCoupon> UserCoupons { get; set; }
-    }
-    
-    public class PeriodWorks
-    {
-        public DateTime DateFrom { get; set;  }
-        public DateTime DateTo { get; set;  }
     }
 }
