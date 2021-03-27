@@ -13,6 +13,9 @@ namespace CouponsBot.Domain.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string SecretCode { get; set; }
+        public double Price { get; set; }
+        public double OldPrice { get; set; }
+        public double DiscountAmount { get; set; }
         public PeriodWorks PeriodWorks { get; set; }
         public bool IsWorked { get; set; }
         public bool IsArchived { get; set; }
