@@ -12,11 +12,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Repository" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\CouponsBot.Domain\CouponsBot.Domain.csproj" />
+      <ProjectReference Include="..\CouponsBot.Interfaces\CouponsBot.Interfaces.csproj" />
     </ItemGroup>
 
 </Project>

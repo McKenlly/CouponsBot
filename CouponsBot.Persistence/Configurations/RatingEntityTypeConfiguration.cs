@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CouponsBot.Persistence.Configurations
 {
-    public class RationEntityTypeConfiguration : IEntityTypeConfiguration<Rating>
+    public class RatingEntityTypeConfiguration : IEntityTypeConfiguration<Rating>
     {
         public void Configure(EntityTypeBuilder<Rating> builder)
         {

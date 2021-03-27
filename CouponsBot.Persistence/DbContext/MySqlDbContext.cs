@@ -3,27 +3,28 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using CouponsBot.Domain.Models;
+using EntityDbContext = System.Data.Entity.DbContext;
 using CouponsBot.Persistence.Configurations;
 
 namespace CouponsBot.Persistence.DbContext
 {
-    public class MySqlDbContext : System.Data.Entity.DbContext
+    public class MySqlDbContext : EntityDbContext
     {
-        public Microsoft.EntityFrameworkCore.DbSet<Coupon> Coupons { get; set; }
-        public Microsoft.EntityFrameworkCore.DbSet<Rating> Ratings { get; set; }
-        public Microsoft.EntityFrameworkCore.DbSet<User> Users { get; set; }
-        public Microsoft.EntityFrameworkCore.DbSet<Company> Companies { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Company> Companies { get; set; }
         
-        public MySqlDbContext() : base("CoouponsDb") {}
+        public MySqlDbContext() : base("MySqlConnectionString") {}
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.AddFromAssembly(typeof(CompanyEntityTypeConfiguration).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(CouponEntityTypeConfiguration).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(RatingEntityTypeConfiguration).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(UserCouponEntityTypeConfiguration).Assembly);
+            modelBuilder.Configurations.AddFromAssembly(typeof(UserEntityTypeConfiguration).Assembly);
         }
-
-        protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
-        {
-            return base.ValidateEntity(entityEntry, items);
-        }
+        
     }
 }
