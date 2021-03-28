@@ -26,6 +26,13 @@ namespace CouponsBot.Persistence.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync(Coupon coupon)
+        {
+            var result = await FindCouponByNameAsync(coupon.Name);
+            result.Select(x => _coupons.Update(x));
+            await _context.SaveChangesAsync();
+        }
+
         public IReadOnlyCollection<Coupon> ListAllByCompany(int companyId)
         {
             return _coupons.Where<Coupon>(x => x.CompanyId == companyId).ToArray();
@@ -52,6 +59,12 @@ namespace CouponsBot.Persistence.Repository
         public async Task<Maybe<Coupon>> FindCouponByIdAsync(int id)
         {
             var coupon = await _coupons.FindAsync(id);
+            return coupon.ToMaybe();
+        }
+
+        public async Task<Maybe<Coupon>> FindCouponByNameAsync(string name)
+        {
+            var coupon = await _coupons.Where(x => x.Name == name).FirstOrDefaultAsync();
             return coupon.ToMaybe();
         }
 

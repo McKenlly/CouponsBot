@@ -8,6 +8,10 @@
       <PackageReference Include="EntityFramework" Version="6.4.4" />
       <PackageReference Include="Maybe" Version="1.2.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.4" />
+      <PackageReference Include="MoreLinq.Source.MoreEnumerable.ForEach" Version="1.0.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
     </ItemGroup>
 
