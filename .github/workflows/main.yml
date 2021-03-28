@@ -28,9 +28,6 @@ jobs:
     - name: Install dependencies CouponsBot.Tests
       run: dotnet restore
       working-directory: CouponsBot.Tests
-    - name: Build CouponsBot
-      run: dotnet build --configuration Release --no-restore
-      working-directory: CouponsBot
     - name: Test
       run: dotnet test --no-restore --verbosity normal
       working-directory: CouponsBot.Tests
